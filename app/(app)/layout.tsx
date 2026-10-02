@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     canonical: 'https://findback-ai-two.vercel.app/',
   },
 
+  // Google Search Console verification
   verification: {
     google: '9chHnX9pN6eVXnhfdEgc6vf3yeS5kbXlc7XMdc8gY1U',
   },
@@ -54,14 +55,14 @@ export const metadata: Metadata = {
     siteName: 'FindBack AI',
     title: 'FindBack AI — AI-Powered Lost & Found',
     description:
-      'FindBack AI helps organizations find, match, verify and return lost items using AI-powered matching.',
+      'Find, match, verify and return lost items with AI-powered lost and found management.',
   },
 
   twitter: {
     card: 'summary_large_image',
     title: 'FindBack AI — AI-Powered Lost & Found',
     description:
-      'AI-powered lost and found management for organizations.',
+      'AI-powered lost and found management for colleges, offices, hostels, hospitals, malls and organizations.',
   },
 };
 
