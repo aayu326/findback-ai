@@ -1,18 +1,133 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================================================================
+   FindBack AI — Midnight + Ice Blue + Signal Orange
+   Midnight  #070B14 #0D1424 #111C31
+   Ice blue  #38BDF8 #7DD3FC   (AI / search)
+   Orange    #FF8A3D #FFAD72   (lost / recovery)
+   Text      #F8FAFC #CBD5E1 #94A3B8
+   Green     only for verified / returned states
+   ========================================================================== */
+
 @layer base {
   :root {
-    --background: 0 0% 100%; --foreground: 222 47% 11%; --card: 0 0% 100%;
-    --muted: 220 30% 96%; --muted-foreground: 220 12% 42%; --border: 220 20% 90%;
-    --primary: 222 60% 14%; --primary-foreground: 0 0% 100%; --accent: 217 91% 55%;
+    color-scheme: dark;
+    --background: 219 48% 5%;            /* #070B14 */
+    --foreground: 210 40% 98%;           /* #F8FAFC */
+    --card: 221 47% 10%;                 /* #0D1424 */
+    --muted: 220 48% 13%;                /* #111C31 */
+    --muted-foreground: 215 20% 65%;     /* #94A3B8 */
+    --border: 217 33% 18%;
+    --primary: 199 93% 60%;              /* #38BDF8 */
+    --primary-foreground: 219 48% 5%;    /* #070B14 */
+    --accent: 199 93% 60%;               /* #38BDF8 */
   }
   * { @apply border-border; }
   body { @apply bg-background text-foreground antialiased; font-feature-settings: 'cv11', 'ss01'; }
   html { scroll-behavior: smooth; }
+  ::selection { background: rgba(56, 189, 248, 0.3); }
 }
+
 @layer utilities {
-  .bg-grid { background-image: radial-gradient(rgba(96,165,250,.18) 1px, transparent 1px); background-size: 22px 22px; }
+  /* Landing hero: very subtle ice-blue glow + faint dot grid */
+  .bg-grid {
+    background-image:
+      radial-gradient(ellipse 70% 55% at 50% 0%, rgba(56, 189, 248, 0.12), transparent 70%),
+      radial-gradient(rgba(125, 211, 252, 0.07) 1px, transparent 1px);
+    background-size: 100% 100%, 24px 24px;
+  }
   .fade-in { animation: fade .4s ease-out both; }
   @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 }
+
+/* ==========================================================================
+   OVERRIDES for hard-coded Tailwind classes used in the components.
+   These are intentionally OUTSIDE @layer and AFTER @tailwind utilities,
+   so they win over the default utilities (same specificity, later wins).
+   ========================================================================== */
+
+/* --- Surfaces: no white cards on the dark theme --- */
+.bg-white { background-color: #0D1424; }
+.bg-white\/90 { background-color: rgba(7, 11, 20, 0.85); }           /* app top bar */
+input.bg-white, select.bg-white, textarea.bg-white { background-color: #111C31; }
+.text-navy-900 { color: #F8FAFC; }                                    /* logo text on dark pages */
+
+/* Dark "navy" areas become the midnight scale */
+.bg-navy-950 { background-color: #070B14; }
+.bg-navy-900 { background-color: #0D1424; }
+.bg-navy-800 { background-color: #111C31; }
+.hover\:bg-navy-700:hover { background-color: #7DD3FC; }              /* default button hover */
+
+/* --- Accent buttons: ice blue with dark text (white on #38BDF8 is hard to read) --- */
+.bg-accent { color: #070B14; }
+.hover\:bg-blue-600:hover, .hover\:bg-blue-700:hover { background-color: #7DD3FC; }
+
+/* "Report Lost Item" on the landing page = SIGNAL ORANGE (lost / recovery) */
+.bg-accent[href="/report/lost"] { background-color: #FF8A3D; color: #070B14; font-weight: 600; box-shadow: none; }
+.bg-accent[href="/report/lost"]:hover { background-color: #FFAD72; }
+
+/* "Report Found Item" on the landing page = transparent with ICE BLUE border */
+.border-white\/20[href="/report/found"] { border-color: rgba(56, 189, 248, 0.6); background-color: transparent; color: #F8FAFC; }
+.border-white\/20[href="/report/found"]:hover { border-color: #38BDF8; background-color: rgba(56, 189, 248, 0.1); }
+
+/* Navbar "Get started" (the white 'light' button) = ice blue */
+a.bg-white.text-navy-900, button.bg-white.text-navy-900 { background-color: #38BDF8; color: #070B14; font-weight: 600; }
+a.bg-white.text-navy-900:hover, button.bg-white.text-navy-900:hover { background-color: #7DD3FC; }
+
+/* Navbar "Log in" (ghostDark) = subtle */
+header a.border-white\/20:not([href="/report/found"]) { border-color: transparent; color: #CBD5E1; }
+
+/* Hero: drop the big blurred blob, the radial glow above replaces it */
+.blur-3xl.bg-accent\/20 { display: none; }
+
+/* Hero highlight "Return what was found." = subtle ice-blue gradient */
+.text-blue-400 {
+  background-image: linear-gradient(90deg, #7DD3FC, #38BDF8);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+}
+.text-blue-200 { color: #7DD3FC; }
+
+/* --- Tinted chips / info boxes: light pastels -> translucent dark tints --- */
+/* blue  = AI / search  -> ice blue */
+.bg-blue-50 { background-color: rgba(56, 189, 248, 0.10); }
+.bg-blue-50\/60 { background-color: rgba(56, 189, 248, 0.06); }
+.bg-blue-50\/40 { background-color: rgba(56, 189, 248, 0.05); }
+.hover\:bg-blue-50:hover { background-color: rgba(56, 189, 248, 0.16); }
+.text-blue-700, .text-blue-800 { color: #7DD3FC; }
+.text-blue-900 { color: #CBD5E1; }
+.text-blue-900\/70 { color: rgba(203, 213, 225, 0.7); }
+.border-blue-200 { border-color: rgba(56, 189, 248, 0.3); }
+.ring-blue-200 { --tw-ring-color: rgba(56, 189, 248, 0.3); }
+
+/* amber = pending / claimed -> signal orange */
+.bg-amber-50 { background-color: rgba(255, 138, 61, 0.12); }
+.text-amber-700 { color: #FFAD72; }
+.ring-amber-200 { --tw-ring-color: rgba(255, 138, 61, 0.3); }
+
+/* emerald = verified / returned -> green */
+.bg-emerald-50 { background-color: rgba(52, 211, 153, 0.12); }
+.text-emerald-700, .text-emerald-800 { color: #6EE7B7; }
+.ring-emerald-200 { --tw-ring-color: rgba(52, 211, 153, 0.3); }
+
+/* red = rejected / errors */
+.bg-red-50 { background-color: rgba(248, 113, 113, 0.12); }
+.text-red-700 { color: #FCA5A5; }
+.text-red-600 { color: #F87171; }
+.ring-red-200 { --tw-ring-color: rgba(248, 113, 113, 0.3); }
+
+/* neutral / slate grey badges */
+.bg-neutral-100, .bg-slate-100 { background-color: rgba(148, 163, 184, 0.12); }
+.text-neutral-700, .text-slate-700 { color: #CBD5E1; }
+.ring-neutral-200, .ring-slate-200 { --tw-ring-color: rgba(148, 163, 184, 0.25); }
+
+/* --- Charts (Recharts draws with inline colors) --- */
+.recharts-cartesian-grid line { stroke: rgba(148, 163, 184, 0.15); }
+.recharts-cartesian-axis-tick-value { fill: #94A3B8; }
+.recharts-bar-rectangle path { fill: #38BDF8; }
+.recharts-line-curve[stroke="#0a0a0a"], .recharts-line-curve[stroke="#0b1530"] { stroke: #FF8A3D; }  /* "lost" line = orange */
+.recharts-line-curve[stroke="#3b82f6"] { stroke: #38BDF8; }                                       /* "found" line = ice blue */
+.recharts-default-tooltip { background-color: #111C31 !important; border-color: rgba(148, 163, 184, 0.25) !important; color: #F8FAFC; }
+.recharts-tooltip-cursor { fill: rgba(56, 189, 248, 0.08); }
