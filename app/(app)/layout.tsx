@@ -1,27 +1,27 @@
-import type { Metadata } from 'next';
-import './globals.css';
+import { getCtx } from '@/lib/auth';
+import { createClient } from '@/lib/supabase/server';
+import { Shell } from '@/components/shell';
 
-export const metadata: Metadata = {
-  title: 'FindBack AI — Find what was lost. Return what was found.',
-  description:
-    'AI-powered lost & found for colleges, offices, hostels, hospitals and malls.',
-};
+export const dynamic = 'force-dynamic';
 
-export default function RootLayout({
+export default async function AppLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <head>
-        <meta
-          name="google-site-verification"
-          content="9chHnX9pN6eVXnhfdEgc6vf3yeS5kbXlc7XMdc8gY1U"
-        />
-      </head>
+  const ctx = await getCtx();
 
-      <body>{children}</body>
-    </html>
+  const supabase = await createClient();
+
+  const { count } = await supabase
+    .from('notifications')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', ctx.userId)
+    .eq('read', false);
+
+  return (
+    <Shell ctx={ctx} unread={count ?? 0}>
+      {children}
+    </Shell>
   );
 }

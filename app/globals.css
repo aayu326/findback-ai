@@ -130,4 +130,6 @@ header a.border-white\/20:not([href="/report/found"]) { border-color: transparen
 .recharts-line-curve[stroke="#0a0a0a"], .recharts-line-curve[stroke="#0b1530"] { stroke: #FF8A3D; }  /* "lost" line = orange */
 .recharts-line-curve[stroke="#3b82f6"] { stroke: #38BDF8; }                                       /* "found" line = ice blue */
 .recharts-default-tooltip { background-color: #111C31 !important; border-color: rgba(148, 163, 184, 0.25) !important; color: #F8FAFC; }
+
 .recharts-tooltip-cursor { fill: rgba(56, 189, 248, 0.08); }
+
