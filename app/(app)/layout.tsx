@@ -12,35 +12,8 @@ export const metadata: Metadata = {
   description:
     'FindBack AI is an AI-powered lost and found platform for colleges, offices, hostels, hospitals, malls and organizations.',
 
-  keywords: [
-    'AI lost and found',
-    'lost and found management system',
-    'lost and found software',
-    'lost and found platform',
-    'AI lost item matching',
-    'digital lost and found',
-    'college lost and found system',
-    'office lost and found system',
-    'hospital lost and found system',
-    'hostel lost and found system',
-    'mall lost and found system',
-  ],
-
-  authors: [
-    {
-      name: 'FindBack AI',
-    },
-  ],
-
-  creator: 'FindBack AI',
-
   alternates: {
     canonical: 'https://findback-ai-two.vercel.app/',
-  },
-
-  // Google Search Console verification
-  verification: {
-    google: '9chHnX9pN6eVXnhfdEgc6vf3yeS5kbXlc7XMdc8gY1U',
   },
 
   robots: {
@@ -62,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'FindBack AI — AI-Powered Lost & Found',
     description:
-      'AI-powered lost and found management for colleges, offices, hostels, hospitals, malls and organizations.',
+      'AI-powered lost and found management for organizations.',
   },
 };
 
@@ -73,6 +46,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="9chHnX9pN6eVXnhfdEgc6vf3yeS5kbXlc7XMdc8gY1U"
+        />
+      </head>
+
       <body>{children}</body>
     </html>
   );
