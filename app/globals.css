@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    --background: 0 0% 100%; --foreground: 222 47% 11%; --card: 0 0% 100%;
+    --muted: 220 30% 96%; --muted-foreground: 220 12% 42%; --border: 220 20% 90%;
+    --primary: 222 60% 14%; --primary-foreground: 0 0% 100%; --accent: 217 91% 55%;
+  }
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-feature-settings: 'cv11', 'ss01'; }
+  html { scroll-behavior: smooth; }
+}
+@layer utilities {
+  .bg-grid { background-image: radial-gradient(rgba(96,165,250,.18) 1px, transparent 1px); background-size: 22px 22px; }
+  .fade-in { animation: fade .4s ease-out both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
