@@ -1,4 +1,4 @@
-# FindBack AI — Lost & Found for organizations
+# Reclaimo — Lost & Found for organizations
 
 **Find what was lost. Return what was found.** A real, end-to-end MVP: Next.js 15 + TypeScript, Tailwind + shadcn-style UI, Supabase (Postgres, Auth, Storage, RLS, pgvector), Zod + React Hook Form, Recharts, and a pluggable AI layer.
 
@@ -28,7 +28,7 @@ See **[AI_SETUP.md](AI_SETUP.md)**. Without a key the app still works.
 npm run seed    # demo college: users, 5 lost + 5 found reports, real AI + matching
 npm run dev     # http://localhost:3000
 ```
-Demo logins (password `Demo@12345`): `admin@findback.demo`, `arjun@findback.demo`, `sara@findback.demo`, `ravi@findback.demo`. New users can join with code **`DEMO2026`**.
+Demo logins (password `Demo@12345`): `admin@reclaimo.demo`, `arjun@reclaimo.demo`, `sara@reclaimo.demo`, `ravi@reclaimo.demo`. New users can join with code **`DEMO2026`**.
 
 Demo flow: log in as **arjun** → "My Reports" → *Black leather wallet* → see the Potential Match → "View & claim" → submit private details → log in as **admin** → *Claims* → compare against the finder's private details → Approve → Mark returned → Arjun gets notifications.
 

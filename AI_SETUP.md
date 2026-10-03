@@ -1,6 +1,6 @@
 # AI Setup
 
-FindBack AI works **with or without AI**. If the AI key is missing, rate-limited or the call fails, reports are still saved and matched using category / color / brand / location / time / keyword signals. AI adds: image+text analysis, embeddings (semantic similarity) and short match explanations.
+Reclaimo works **with or without AI**. If the AI key is missing, rate-limited or the call fails, reports are still saved and matched using category / color / brand / location / time / keyword signals. AI adds: image+text analysis, embeddings (semantic similarity) and short match explanations.
 
 ## Free-tier choice (verified Oct 2026)
 
@@ -10,7 +10,7 @@ Things to know (verified from Google's docs and recent third-party measurements)
 - Since April 2026 the free tier is **Flash / Flash-Lite models only** (Pro models are paid).
 - Google no longer publishes a fixed free-tier table; **check your limits in [AI Studio](https://aistudio.google.com)**. Expect low daily request quotas — each report uses ~2 calls (analyze + embed) plus up to 3 short explain calls.
 - Model names change often and older ones are closed to new signups. Pick a currently listed Flash model in AI Studio and set `AI_MODEL`. `gemini-flash-latest` is used as the default alias.
-- **Free-tier content may be used by Google to improve its products.** For real deployments with personal data, use a paid/billing-enabled key. FindBack never sends private verification details (IDs, serials, contacts) to the AI — only title, description and the photo.
+- **Free-tier content may be used by Google to improve its products.** For real deployments with personal data, use a paid/billing-enabled key. reclaimo never sends private verification details (IDs, serials, contacts) to the AI — only title, description and the photo.
 
 ## Configure
 

@@ -24,10 +24,10 @@ async function main() {
   if (!org) throw new Error('Run supabase/seed.sql first (demo organization + locations).');
   const { data: locs } = await db.from('locations').select('id,name').eq('org_id', ORG);
   const L = (n: string) => locs?.find((l) => l.name === n)?.id;
-  const admin = await user('admin@findback.demo', 'Dr. Meera Iyer (Admin)', 'admin');
-  const arjun = await user('arjun@findback.demo', 'Arjun Mehta', 'member');
-  const sara = await user('sara@findback.demo', 'Sara Khan', 'member');
-  const ravi = await user('ravi@findback.demo', 'Ravi Patel', 'member');
+  const admin = await user('admin@reclaimo.demo', 'Dr. Meera Iyer (Admin)', 'admin');
+  const arjun = await user('arjun@reclaimo.demo', 'Arjun Mehta', 'member');
+  const sara = await user('sara@reclaimo.demo', 'Sara Khan', 'member');
+  const ravi = await user('ravi@reclaimo.demo', 'Ravi Patel', 'member');
   void admin;
 
   await db.from('lost_items').delete().eq('org_id', ORG); await db.from('found_items').delete().eq('org_id', ORG);
@@ -57,6 +57,6 @@ async function main() {
     }
   }
   for (const [k, id] of ids) { await enrichAndMatch(k, id); console.log('processed', k, id); }
-  console.log('\nDemo ready. Logins (password', PASSWORD + '):\n  admin@findback.demo\n  arjun@findback.demo\n  sara@findback.demo\n  ravi@findback.demo\nOrg join code: DEMO2026');
+  console.log('\nDemo ready. Logins (password', PASSWORD + '):\n  admin@reclaimo.demo\n  arjun@reclaimo.demo\n  sara@reclaimo.demo\n  ravi@reclaimo.demo\nOrg join code: DEMO2026');
 }
 main().catch((e) => { console.error(e); process.exit(1); });

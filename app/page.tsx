@@ -305,7 +305,7 @@ export default function Landing() {
         </div>
 
         <p className="mt-3">
-          © {new Date().getFullYear()} FindBack AI. Match scores are
+          © {new Date().getFullYear()} Reclaimo. Match scores are
           similarity signals, not proof of ownership.
         </p>
 

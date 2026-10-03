@@ -1,4 +1,4 @@
--- FindBack AI core schema
+-- Reclaimo core schema
 create extension if not exists vector;
 create extension if not exists pgcrypto;
 
