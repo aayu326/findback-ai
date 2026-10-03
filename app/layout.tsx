@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'FindBack AI — Find what was lost. Return what was found.',
+  title: 'FindBack AI-Find what was lost. Return what was found.',
   description:
-    'AI-powered lost & found for colleges, Hostel, offices, hostels, hospitals and malls.',
+    'AI-powered lost & found for colleges, lost and found AI for offices,lost and found AI for  hostels,lost and found AI for companies,  lost and found AI for  hospitals and lost and found AI for malls.',
 };
 
 export default function RootLayout({
